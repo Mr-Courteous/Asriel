@@ -1,0 +1,175 @@
+"use client";
+
+import { motion } from "framer-motion";
+import {
+  Cpu,
+  BookOpen,
+  GraduationCap,
+  HandHeart,
+  Users,
+  Award,
+  Cross,
+  CheckCircle,
+  LucideIcon,
+} from "lucide-react";
+import { programs } from "@/lib/constants";
+
+const iconMap: Record<string, LucideIcon> = {
+  Cpu,
+  BookOpen,
+  GraduationCap,
+  HandHeart,
+  Users,
+  Award,
+  Cross,
+};
+
+export default function ProgramsPage() {
+  return (
+    <>
+      {/* Hero */}
+      <section className="pt-32 pb-20 md:pb-28 bg-navy relative overflow-hidden grain-overlay">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,168,76,0.1)_0%,_transparent_50%)]" />
+        <div className="container mx-auto px-4 md:px-6 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <span className="inline-block px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-sm font-medium mb-6">
+              Our Programs
+            </span>
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream mb-6 hero-heading">
+              Educational Programs
+            </h1>
+            <p className="text-lg text-cream/70 leading-relaxed">
+              Comprehensive support designed to help students succeed
+              academically, technologically, and spiritually.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Programs Grid */}
+      <section className="py-20 md:py-28 bg-cream">
+        <div className="container mx-auto px-4 md:px-6">
+          <div className="space-y-16">
+            {programs.map((program, index) => {
+              const Icon = iconMap[program.icon] || BookOpen;
+              const isEven = index % 2 === 0;
+
+              return (
+                <motion.div
+                  key={program.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className={`grid lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
+                    isEven ? "" : "lg:flex-row-reverse"
+                  }`}
+                >
+                  {/* Content */}
+                  <div className={isEven ? "lg:order-1" : "lg:order-2"}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="w-14 h-14 rounded-xl bg-gold/10 flex items-center justify-center">
+                        <Icon className="w-7 h-7 text-gold" />
+                      </div>
+                      <span className="text-gold text-sm font-medium uppercase tracking-wide">
+                        Program {index + 1}
+                      </span>
+                    </div>
+
+                    <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-4">
+                      {program.title}
+                    </h2>
+
+                    <p className="text-navy/70 text-lg leading-relaxed mb-6">
+                      {program.description}
+                    </p>
+
+                    <div className="space-y-4">
+                      <div className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-semibold text-navy">
+                            Eligibility
+                          </h4>
+                          <p className="text-navy/70 text-sm">
+                            {program.eligibility}
+                          </p>
+                        </div>
+                      </div>
+
+                      <div className="flex items-start gap-3">
+                        <CheckCircle className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
+                        <div>
+                          <h4 className="font-semibold text-navy">
+                            How to Apply
+                          </h4>
+                          <p className="text-navy/70 text-sm">
+                            {program.howToApply}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Visual */}
+                  <div
+                    className={`glass-card p-8 md:p-10 ${
+                      isEven ? "lg:order-2" : "lg:order-1"
+                    }`}
+                  >
+                    <div className="aspect-video rounded-xl bg-gradient-to-br from-gold/10 to-navy/10 flex items-center justify-center">
+                      <div className="text-center">
+                        <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4">
+                          <Icon className="w-10 h-10 text-gold" />
+                        </div>
+                        <p className="text-navy/60 text-sm font-medium">
+                          {program.title}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Additional Info */}
+      <section className="py-20 md:py-28 bg-cream-warm">
+        <div className="container mx-auto px-4 md:px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mx-auto text-center"
+          >
+            <span className="inline-block px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-sm font-medium mb-6">
+              Get Started
+            </span>
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy mb-6">
+              Ready to Apply?
+            </h2>
+            <p className="text-navy/70 text-lg leading-relaxed mb-8">
+              Our programs are designed to support students at various levels
+              of their educational journey. Whether you&apos;re looking for
+              academic support, STEM training, or spiritual guidance, we have a
+              program for you.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <a href="/contact" className="btn-primary">
+                Contact Us
+              </a>
+              <a href="/donate" className="btn-outline">
+                Support Our Programs
+              </a>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+    </>
+  );
+}
