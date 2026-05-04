@@ -24,7 +24,7 @@ export default function Navbar() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-500",
         isScrolled
-          ? "bg-cream/95 backdrop-blur-md border-b border-gold/10 py-3 shadow-lg shadow-navy/5"
+          ? "bg-cream/95 backdrop-blur-md border-b border-gold/10 py-4 shadow-lg shadow-navy/5"
           : "bg-transparent py-6"
       )}
     >
@@ -35,10 +35,10 @@ export default function Navbar() {
             <img
               src="/images/7f06501d-48c3-4493-a5ef-e3b1f5083779.png"
               alt="Asriel Foundation Logo"
-              className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+              className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
             />
             <span className={cn(
-              "font-display text-2xl font-bold hidden sm:block transition-colors duration-300",
+              "font-display text-3xl font-bold hidden sm:block transition-colors duration-300",
               isScrolled ? "text-navy" : "text-cream"
             )}>
               {foundation.name}

@@ -18,9 +18,9 @@ export default function Footer() {
               <img
                 src="/images/7f06501d-48c3-4493-a5ef-e3b1f5083779.png"
                 alt="Asriel Foundation Logo"
-                className="h-20 w-auto object-contain"
+                className="h-32 w-auto object-contain"
               />
-              <span className="font-display text-2xl font-semibold text-cream">
+              <span className="font-display text-4xl font-semibold text-cream">
                 {foundation.name}
               </span>
             </div>
