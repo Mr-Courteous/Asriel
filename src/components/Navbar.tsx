@@ -32,9 +32,11 @@ export default function Navbar() {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2 group">
-            <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-              <span className="text-navy font-display font-bold text-lg">A</span>
-            </div>
+            <img
+              src="/images/7f06501d-48c3-4493-a5ef-e3b1f5083779.png"
+              alt="Asriel Foundation Logo"
+              className="h-10 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+            />
             <span className={cn(
               "font-display text-xl font-bold hidden sm:block transition-colors duration-300",
               isScrolled ? "text-navy" : "text-cream"

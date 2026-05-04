@@ -7,6 +7,7 @@ import HeroSection from "@/components/HeroSection";
 import ImpactCounter from "@/components/ImpactCounter";
 import ProgramCard from "@/components/ProgramCard";
 import TestimonialCarousel from "@/components/TestimonialCarousel";
+import ProjectGallery from "@/components/ProjectGallery";
 import { foundation, programs, partners } from "@/lib/constants";
 
 export default function HomePage() {
@@ -115,6 +116,9 @@ export default function HomePage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Project Gallery */}
+      <ProjectGallery />
 
       {/* Testimonials */}
       <TestimonialCarousel />

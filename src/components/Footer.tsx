@@ -15,9 +15,11 @@ export default function Footer() {
           {/* Brand */}
           <div className="space-y-4">
             <div className="flex items-center gap-2">
-              <div className="w-10 h-10 rounded-full bg-gold flex items-center justify-center">
-                <span className="text-navy font-display font-bold text-lg">A</span>
-              </div>
+              <img
+                src="/images/7f06501d-48c3-4493-a5ef-e3b1f5083779.png"
+                alt="Asriel Foundation Logo"
+                className="h-12 w-auto object-contain"
+              />
               <span className="font-display text-xl font-semibold text-cream">
                 {foundation.name}
               </span>

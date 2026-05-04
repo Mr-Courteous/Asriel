@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Target, Eye, Heart, Users, Globe, Leaf, Award } from "lucide-react";
 import { foundation } from "@/lib/constants";
+import ProjectGallery from "@/components/ProjectGallery";
 
 const team = [
   {
@@ -240,6 +241,9 @@ export default function AboutPage() {
           </motion.div>
         </div>
       </section>
+
+      {/* Project Gallery */}
+      <ProjectGallery />
 
       {/* Team Section */}
       <section className="py-20 md:py-28 bg-cream-warm">
