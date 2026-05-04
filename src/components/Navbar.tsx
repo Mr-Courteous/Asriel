@@ -35,7 +35,10 @@ export default function Navbar() {
             <img
               src="/images/7f06501d-48c3-4493-a5ef-e3b1f5083779.png"
               alt="Asriel Foundation Logo"
-              className="h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+              className={cn(
+                "h-20 w-auto object-contain transition-all duration-300 group-hover:scale-110",
+                !isScrolled && "brightness-0 invert"
+              )}
             />
             <span className={cn(
               "font-display text-3xl font-bold hidden sm:block transition-colors duration-300",
