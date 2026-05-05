@@ -14,13 +14,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <img
-                src="/images/7f06501d-48c3-4493-a5ef-e3b1f5083779.png"
-                alt="Asriel Foundation Logo"
-                className="h-32 w-auto object-contain brightness-0 invert"
-              />
-              <span className="font-display text-4xl font-semibold text-cream">
+            <div className="flex items-center gap-4">
+              <div className="bg-white p-3 rounded-2xl shadow-xl shadow-black/10">
+                <img
+                  src="/images/7f06501d-48c3-4493-a5ef-e3b1f5083779.png"
+                  alt="Asriel Foundation Logo"
+                  className="h-20 w-auto object-contain"
+                />
+              </div>
+              <span className="font-display text-2xl font-semibold text-cream">
                 {foundation.name}
               </span>
             </div>

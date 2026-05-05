@@ -31,17 +31,19 @@ export default function Navbar() {
       <div className="container mx-auto px-4 md:px-6">
         <nav className="flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <img
-              src="/images/7f06501d-48c3-4493-a5ef-e3b1f5083779.png"
-              alt="Asriel Foundation Logo"
-              className={cn(
-                "h-20 w-auto object-contain transition-all duration-300 group-hover:scale-110",
-                !isScrolled && "brightness-0 invert"
-              )}
-            />
+          <Link href="/" className="flex items-center gap-4 group">
+            <div className={cn(
+              "p-2 rounded-xl transition-all duration-500",
+              !isScrolled ? "bg-white shadow-xl shadow-navy/20" : "bg-transparent"
+            )}>
+              <img
+                src="/images/7f06501d-48c3-4493-a5ef-e3b1f5083779.png"
+                alt="Asriel Foundation Logo"
+                className="h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-110"
+              />
+            </div>
             <span className={cn(
-              "font-display text-3xl font-bold hidden sm:block transition-colors duration-300",
+              "font-display text-xl font-bold hidden sm:block transition-colors duration-300",
               isScrolled ? "text-navy" : "text-cream"
             )}>
               {foundation.name}
