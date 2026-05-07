@@ -17,18 +17,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Asriel Foundation | Christian Non-Profit Education Ministry",
-  description:
-    "Asriel Foundation is a 501(c)(3) non-profit providing scholarships, STEM training, mentorship, and discipleship to underprivileged students in Richmond, Texas.",
-  keywords: [
-    "non-profit",
-    "education",
-    "scholarship",
-    "STEM",
-    "mentorship",
-    "Christian ministry",
-    "Richmond Texas",
-  ],
+  title: "Asriel Foundations",
+  description: "Asriel Foundations",
 };
 
 export default function RootLayout({

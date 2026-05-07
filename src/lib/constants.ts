@@ -2,14 +2,14 @@
 
 export const foundation = {
   name: "Asriel Foundation",
-  tagline: "Helped by God. Helping Others.",
+  tagline: "Empowering Students. Building Futures.",
   mission:
     "To inspire, encourage, and support hardworking and underprivileged elementary and secondary school students.",
   vision:
-    "A world where every child has access to the best education — and the resources to maximize their God-given potential.",
-  heroHeadline: "Raising Future Leaders Through Education and Faith",
+    "A world where every child has access to the best education — and the resources to maximize their full potential.",
+  heroHeadline: "Raising Future Leaders Through Education",
   heroSubheadline:
-    "We provide scholarships, STEM training, mentorship, and discipleship to underprivileged students in Richmond, Texas and beyond.",
+    "We provide scholarships, STEM training, and mentorship to underprivileged students in Richmond, Texas and beyond.",
   ctaText: "Be the reason a child succeeds.",
   address: "Richmond, Texas",
   ein: "XX-XXXXXXX",
@@ -78,11 +78,11 @@ export const programs = [
     howToApply: "Submit scholarship application with transcripts",
   },
   {
-    id: "discipleship",
-    title: "Discipleship & Seminars",
+    id: "leadership",
+    title: "Leadership & Life Skills",
     description:
-      "Spiritual development through Christian teachings and life skills seminars.",
-    icon: "Cross",
+      "Personal development through leadership training and life skills seminars.",
+    icon: "Compass",
     eligibility: "All students welcome",
     howToApply: "No application needed - open to all",
   },

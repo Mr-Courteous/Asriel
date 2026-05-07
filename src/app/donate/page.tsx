@@ -47,7 +47,7 @@ export default function DonatePage() {
                 Thank You
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream mb-6">
-                God Bless You!
+                Thank You for Your Support!
               </h1>
               <p className="text-lg text-cream/70 leading-relaxed">
                 Your generosity will make a real difference in the lives of

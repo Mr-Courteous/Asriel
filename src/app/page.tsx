@@ -66,8 +66,8 @@ export default function HomePage() {
               </h2>
               <p className="text-navy/70 leading-relaxed">
                 We envision a world where every child has access to the best
-                education — and the resources to maximize their God-given
-                potential. Through faith and education, we are raising the next
+                education — and the resources to maximize their full
+                potential. Through quality education, we are raising the next
                 generation of leaders.
               </p>
             </motion.div>
@@ -93,7 +93,7 @@ export default function HomePage() {
             <p className="text-navy/70 max-w-2xl mx-auto mt-4">
               From STEM training to scholarship support, we offer a range of
               programs designed to help students succeed academically and
-              spiritually.
+              professionally.
             </p>
           </motion.div>
 

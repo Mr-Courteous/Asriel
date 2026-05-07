@@ -127,7 +127,7 @@ export default function HeroSection() {
             Helping Every Child{" "}
             <span className="text-gradient">Rise</span>
             <br />
-            Through Christ
+            To Their Potential
           </motion.h1>
 
           <motion.p

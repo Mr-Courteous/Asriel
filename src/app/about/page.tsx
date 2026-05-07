@@ -7,9 +7,9 @@ import ProjectGallery from "@/components/ProjectGallery";
 
 const team = [
   {
-    name: "Rev. Dr. John Smith",
+    name: "Dr. John Smith",
     role: "Founder & Executive Director",
-    bio: "Dedicated to education ministry for over 20 years.",
+    bio: "Dedicated to educational leadership for over 20 years.",
     icon: Award,
   },
   {
@@ -45,8 +45,8 @@ export default function AboutPage() {
               Our Story
             </h1>
             <p className="text-lg text-cream/70 leading-relaxed">
-              Founded on faith and a commitment to education, Asriel Foundation
-              has been transforming lives since 2011.
+              Founded on a commitment to excellence and education, Asriel
+              Foundation has been transforming lives since 2011.
             </p>
           </motion.div>
         </div>
@@ -97,8 +97,8 @@ export default function AboutPage() {
               </h2>
               <p className="text-navy/70 leading-relaxed">
                 We envision a world where every child has access to the best
-                education — and the resources to maximize their God-given
-                potential. Through faith and education, we are raising the next
+                education — and the resources to maximize their full
+                potential. Through quality education, we are raising the next
                 generation of leaders.
               </p>
             </motion.div>
@@ -151,9 +151,9 @@ export default function AboutPage() {
               },
               {
                 icon: Award,
-                title: "Faith",
+                title: "Purpose",
                 description:
-                  "We integrate Christian values into all aspects of our mission.",
+                  "We integrate values of excellence and service into all aspects of our mission.",
               },
               {
                 icon: Target,
@@ -226,7 +226,7 @@ export default function AboutPage() {
                   Environmental Commitment
                 </span>
                 <h2 className="font-display text-2xl md:text-3xl font-bold text-navy mt-2 mb-4">
-                  Caring for God&apos;s Creation
+                  Caring for Our Environment
                 </h2>
                 <p className="text-navy/70 leading-relaxed">
                   We are committed to environmental stewardship. Our programs
