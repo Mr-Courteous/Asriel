@@ -22,9 +22,6 @@ export default function Footer() {
                   className="h-20 w-auto object-contain"
                 />
               </div>
-              <span className="font-display text-2xl font-semibold text-cream">
-                {foundation.name}
-              </span>
             </div>
             <p className="text-sm leading-relaxed text-cream/60">
               {foundation.tagline}

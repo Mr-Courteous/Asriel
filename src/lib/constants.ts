@@ -1,7 +1,7 @@
 // Foundation data and constants
 
 export const foundation = {
-  name: "Asriel Foundation",
+  name: "Asriel Foundations",
   tagline: "Empowering Students. Building Futures.",
   mission:
     "To inspire, encourage, and support hardworking and underprivileged elementary and secondary school students.",

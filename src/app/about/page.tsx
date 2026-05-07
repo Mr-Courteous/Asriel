@@ -7,21 +7,21 @@ import ProjectGallery from "@/components/ProjectGallery";
 
 const team = [
   {
-    name: "Dr. John Smith",
+    name: "Christiana Lamidi",
     role: "Founder & Executive Director",
-    bio: "Dedicated to educational leadership for over 20 years.",
+    bio: "Educator and Mentor Expert for over 20 years.",
     icon: Award,
   },
   {
-    name: "Sarah Johnson",
-    role: "Program Director",
-    bio: "Former educator with a passion for student success.",
+    name: "Olasupo Samuel Awoleru",
+    role: "Board Member",
+    bio: "Committed to organizational excellence and community impact.",
     icon: Users,
   },
   {
-    name: "Michael Chen",
-    role: "STEM Coordinator",
-    bio: "Engineer turned educator, inspiring future innovators.",
+    name: "Michael Faniran",
+    role: "STEM Director",
+    bio: "Leading innovative STEM programs and technical training.",
     icon: Globe,
   },
 ];
