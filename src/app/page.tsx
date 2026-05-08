@@ -117,8 +117,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Project Gallery */}
-      <ProjectGallery />
+
 
       {/* Testimonials */}
       <TestimonialCarousel />
