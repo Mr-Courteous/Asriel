@@ -23,15 +23,6 @@ const iconMap: Record<string, LucideIcon> = {
   Cross,
 };
 
-const programImages = [
-  "010139cb-e206-478e-bc7f-cc3480d0f79b.JPG",
-  "02dd81d0-f315-4fc7-86d0-a22174131f75.JPG",
-  "17345d7f-9e4b-4a09-b315-31560dc30951.JPG",
-  "179a2bf7-d09f-42a6-bf39-3315c926d804.JPG",
-  "25aa93d8-198b-4dba-b843-f2d58a493bb8.JPG",
-  "298d0a8f-9044-4ab5-bf06-b71d6134bd36.JPG",
-];
-
 export default function ProgramCard({
   program,
   index,
@@ -50,18 +41,15 @@ export default function ProgramCard({
       whileHover={{ y: -8 }}
       className="group rounded-2xl bg-white border border-cream-warm hover:border-gold/30 transition-all duration-300 hover:shadow-xl hover:shadow-gold/5 overflow-hidden flex flex-col h-full"
     >
-      {/* Program Image */}
-      <div className="relative h-48 w-full overflow-hidden">
-        <div className="absolute inset-0 bg-navy/20 group-hover:bg-navy/0 transition-colors duration-500 z-10" />
-        <img
-          src={`/images/New/${programImages[index % programImages.length]}`}
-          alt={program.title}
-          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-700"
-          loading="lazy"
-        />
-        {/* Icon over image */}
-        <div className="absolute top-4 left-4 z-20 w-12 h-12 rounded-xl bg-white/90 backdrop-blur shadow-lg flex items-center justify-center group-hover:bg-gold group-hover:scale-110 transition-all duration-300">
-          <Icon className="w-6 h-6 text-navy group-hover:text-cream" />
+      {/* Program Visual */}
+      <div className="relative h-48 w-full overflow-hidden rounded-t-2xl bg-gradient-to-br from-navy/90 via-slate-900 to-navy">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.08)_0%,_transparent_45%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,_rgba(255,255,255,0.08)_10%,_transparent_10%)_0_0/18px_18px] opacity-30" />
+        <div className="absolute top-4 left-4 z-20 w-14 h-14 rounded-2xl bg-cream/90 shadow-lg flex items-center justify-center transition-all duration-300 group-hover:bg-gold">
+          <Icon className="w-7 h-7 text-navy group-hover:text-cream" />
+        </div>
+        <div className="absolute bottom-4 left-4 z-20 rounded-full border border-cream/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cream">
+          {program.title}
         </div>
       </div>
 

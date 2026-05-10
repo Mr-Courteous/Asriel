@@ -80,23 +80,12 @@ export default function HeroSection() {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden grain-overlay">
       {/* Background */}
       <div className="absolute inset-0 overflow-hidden">
-        {/* The Image */}
-        <motion.img
-          initial={{ scale: 1.1, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.7 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-          src="/images/hero_background.png"
-          alt="Inspiring learning environment"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        
-        {/* Overlays */}
-        <div className="absolute inset-0 bg-navy/60 z-10" />
-        <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-navy/60 to-navy z-10" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(10,22,40,0.4)_100%)] z-10" />
-        
-        {/* Radial gold glow */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(201,168,76,0.15)_0%,_transparent_70%)] z-10" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy via-slate-900 to-navy/95" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(201,168,76,0.18)_0%,_transparent_35%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.05)_0%,_transparent_65%)]" />
+        <div className="absolute left-1/2 top-28 h-96 w-96 -translate-x-1/2 rounded-full bg-gold/10 blur-3xl" />
+        <div className="absolute right-10 top-40 h-56 w-56 rounded-full border border-gold/20 opacity-50" />
+        <div className="absolute left-10 bottom-20 h-40 w-40 rounded-full border border-cream/20 opacity-40" />
       </div>
 
       {/* Particle canvas */}
@@ -151,6 +140,27 @@ export default function HeroSection() {
             <Link href="/about" className="btn-outline text-lg px-8">
               Learn More
             </Link>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="mt-10 flex flex-wrap justify-center gap-3"
+          >
+            {[
+              "UTME Preparation",
+              "STEM Training",
+              "WAEC / GCE Coaching",
+              "Mentorship"
+            ].map((label) => (
+              <span
+                key={label}
+                className="rounded-full border border-cream/20 bg-cream/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-cream/90"
+              >
+                {label}
+              </span>
+            ))}
           </motion.div>
         </div>
       </div>

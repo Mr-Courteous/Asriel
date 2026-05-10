@@ -3,28 +3,6 @@
 import { motion } from "framer-motion";
 import { Target, Eye, Heart, Users, Globe, Leaf, Award } from "lucide-react";
 import { foundation } from "@/lib/constants";
-import ProjectGallery from "@/components/ProjectGallery";
-
-const team = [
-  {
-    name: "Christiana Lamidi",
-    role: "Founder & Executive Director",
-    bio: "Educator and Mentor Expert for over 20 years.",
-    icon: Award,
-  },
-  {
-    name: "Olasupo Samuel Awoleru",
-    role: "Board Member",
-    bio: "Committed to organizational excellence and community impact.",
-    icon: Users,
-  },
-  {
-    name: "Michael Faniran",
-    role: "STEM Director",
-    bio: "Leading innovative STEM programs and technical training.",
-    icon: Globe,
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -239,52 +217,6 @@ export default function AboutPage() {
               </div>
             </div>
           </motion.div>
-        </div>
-      </section>
-
-      {/* Project Gallery */}
-      <ProjectGallery />
-
-      {/* Team Section */}
-      <section className="py-20 md:py-28 bg-cream-warm">
-        <div className="container mx-auto px-4 md:px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-sm font-medium mb-4">
-              Our Team
-            </span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-navy">
-              Dedicated Leaders
-            </h2>
-          </motion.div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {team.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-6 rounded-xl bg-white border border-cream-warm text-center"
-              >
-                <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4">
-                  <member.icon className="w-10 h-10 text-gold" />
-                </div>
-                <h3 className="font-display text-lg font-semibold text-navy">
-                  {member.name}
-                </h3>
-                <p className="text-gold text-sm font-medium mb-2">
-                  {member.role}
-                </p>
-                <p className="text-navy/60 text-sm">{member.bio}</p>
-              </motion.div>
-            ))}
-          </div>
         </div>
       </section>
 
