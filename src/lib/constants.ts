@@ -88,6 +88,16 @@ export const programs = [
   },
 ];
 
+export const programLogos: Record<string, string> = {
+  stem: "/images/stem_logo.png",
+  utme: "/images/jamblogo.png",
+  waec: "/images/Waec_logo.png",
+  saat: "/images/Saat.png",
+  mentorship: "/images/Mentorship.png",
+  scholarship: "/images/Scholarship.png",
+  leadership: "/images/leadership.png",
+};
+
 export const testimonials = [
   {
     id: 1,

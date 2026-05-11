@@ -11,7 +11,7 @@ import {
   Cross,
   LucideIcon,
 } from "lucide-react";
-import { programs } from "@/lib/constants";
+import { programs, programLogos } from "@/lib/constants";
 
 const iconMap: Record<string, LucideIcon> = {
   Cpu,
@@ -44,15 +44,7 @@ export default function ProgramCard({
       {/* Program Visual */}
       <div className="relative h-48 w-full overflow-hidden rounded-t-2xl bg-navy">
         {(() => {
-          const logos: Record<string, string> = {
-            stem: "/images/stem_logo.png",
-            utme: "/images/jamblogo.png",
-            waec: "/images/Waec_logo.png",
-            saat: "/images/Saat.png",
-            mentorship: "/images/Mentorship.png",
-            scholarship: "/images/Scholarship.png",
-          };
-          const logoSrc = logos[program.id];
+          const logoSrc = programLogos[program.id];
           if (!logoSrc) {
             return (
               <div className="absolute inset-0 bg-gradient-to-br from-navy/90 via-slate-900 to-navy" />

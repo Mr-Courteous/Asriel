@@ -12,7 +12,7 @@ import {
   CheckCircle,
   LucideIcon,
 } from "lucide-react";
-import { programs } from "@/lib/constants";
+import { programs, programLogos } from "@/lib/constants";
 
 const iconMap: Record<string, LucideIcon> = {
   Cpu,
@@ -126,16 +126,35 @@ export default function ProgramsPage() {
 
                   {/* Visual */}
                   <div
-                    className={`glass-card p-8 md:p-10 ${
+                    className={`glass-card p-4 md:p-6 overflow-hidden ${
                       isEven ? "lg:order-2" : "lg:order-1"
                     }`}
                   >
-                    <div className="aspect-video rounded-xl bg-gradient-to-br from-gold/10 to-navy/10 flex items-center justify-center">
-                      <div className="text-center">
-                        <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4">
+                    <div className="relative aspect-video rounded-xl bg-navy overflow-hidden flex items-center justify-center">
+                      {(() => {
+                        const logoSrc = programLogos[program.id];
+                        if (logoSrc) {
+                          return (
+                            <>
+                              <img
+                                src={logoSrc}
+                                alt=""
+                                className="absolute inset-0 w-full h-full object-cover opacity-30 group-hover:scale-110 transition-transform duration-500"
+                              />
+                              <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/20 to-transparent" />
+                            </>
+                          );
+                        }
+                        return (
+                          <div className="absolute inset-0 bg-gradient-to-br from-gold/10 to-navy/10" />
+                        );
+                      })()}
+                      
+                      <div className="relative z-10 text-center">
+                        <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-4 backdrop-blur-sm">
                           <Icon className="w-10 h-10 text-gold" />
                         </div>
-                        <p className="text-navy/60 text-sm font-medium">
+                        <p className="text-navy font-bold text-lg drop-shadow-sm">
                           {program.title}
                         </p>
                       </div>
