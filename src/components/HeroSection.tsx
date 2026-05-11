@@ -77,16 +77,19 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden grain-overlay">
-      {/* Background */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-navy via-slate-900 to-navy/95" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(201,168,76,0.18)_0%,_transparent_35%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_rgba(255,255,255,0.05)_0%,_transparent_65%)]" />
-        <div className="absolute left-1/2 top-28 h-96 w-96 -translate-x-1/2 rounded-full bg-gold/10 blur-3xl" />
-        <div className="absolute right-10 top-40 h-56 w-56 rounded-full border border-gold/20 opacity-50" />
-        <div className="absolute left-10 bottom-20 h-40 w-40 rounded-full border border-cream/20 opacity-40" />
-      </div>
+    <section
+      className="relative min-h-screen flex items-center justify-center overflow-hidden flex items-center"
+      style={{
+        backgroundImage: "url('/images/programs_hero_bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      {/* Dark overlay so text stays readable */}
+      <div className="absolute inset-0" style={{ backgroundColor: "rgba(10,22,40,0.65)" }} />
+      <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/70" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,168,76,0.15)_0%,_transparent_60%)]" />
 
       {/* Particle canvas */}
       <canvas

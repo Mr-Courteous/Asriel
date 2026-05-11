@@ -8,21 +8,31 @@ export default function AboutPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-20 md:pb-28 bg-navy relative overflow-hidden grain-overlay">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,168,76,0.1)_0%,_transparent_50%)]" />
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <section
+        className="min-h-[60vh] pt-32 pb-20 md:pb-28 relative flex items-center"
+        style={{
+          backgroundImage: "url('/images/programs_hero_bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Single semi-transparent overlay for text readability */}
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(10,22,40,0.55)" }} />
+
+        <div className="container mx-auto px-4 md:px-6 relative z-10 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-sm font-medium mb-6">
+            <span className="inline-block px-4 py-1.5 rounded-full border text-sm font-medium mb-6" style={{ backgroundColor: "rgba(201,168,76,0.15)", borderColor: "rgba(201,168,76,0.3)", color: "#c9a84c" }}>
               About Us
             </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream mb-6 hero-heading">
+            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold hero-heading mb-6" style={{ color: "#faf7f2" }}>
               Our Story
             </h1>
-            <p className="text-lg text-cream/70 leading-relaxed">
+            <p className="text-lg leading-relaxed" style={{ color: "rgba(250,247,242,0.82)" }}>
               Founded on a commitment to excellence and education, Asriel
               Foundation has been transforming lives since 2011.
             </p>

@@ -5,16 +5,10 @@ import { Users, Award, Shield, Briefcase } from "lucide-react";
 
 const boardMembers = [
   {
-    name: "Lamidi (LMD)",
-    role: "Founder",
-    bio: "Visionary leader and philanthropist dedicated to educational empowerment and community development.",
-    icon: Award,
-  },
-  {
     name: "Christiana Lamidi",
-    role: "Co-founder",
-    bio: "Educator and mentor experienced in developing student-focused educational programs.",
-    icon: Briefcase,
+    role: "Founder & Executive Director",
+    bio: "Educator and Mentor Expert for over 20 years, dedicated to transforming lives through education.",
+    icon: Award,
   },
   {
     name: "Olasupo Samuel Awoleru",
@@ -22,15 +16,34 @@ const boardMembers = [
     bio: "Committed to organizational excellence and community impact with years of experience in leadership.",
     icon: Shield,
   },
+  {
+    name: "Michael Faniran",
+    role: "STEM Director",
+    bio: "Leading innovative STEM programs and technical training for students to prepare them for the future.",
+    icon: Briefcase,
+  },
 ];
 
 export default function BoardMembersPage() {
   return (
     <>
       {/* Hero */}
-      <section className="pt-32 pb-20 md:pb-28 bg-navy relative overflow-hidden grain-overlay">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,168,76,0.1)_0%,_transparent_50%)]" />
-        <div className="container mx-auto px-4 md:px-6 relative z-10">
+      <section className="min-h-[60vh] pt-32 pb-20 md:pb-28 bg-navy relative overflow-hidden grain-overlay flex items-center">
+        {/* Background image */}
+        <motion.img
+          initial={{ scale: 1.08, opacity: 0 }}
+          animate={{ scale: 1, opacity: 0.65 }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          src="/images/board_hero_bg.png"
+          alt="Board members background"
+          className="absolute inset-0 w-full h-full object-cover"
+        />
+        {/* Single light overlay + bottom fade */}
+        <div className="absolute inset-0 bg-navy/40" />
+        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-navy/20 to-navy/80" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,168,76,0.18)_0%,_transparent_60%)]" />
+
+        <div className="container mx-auto px-4 md:px-6 relative z-10 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -42,12 +55,13 @@ export default function BoardMembersPage() {
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-cream mb-6 hero-heading">
               Board Members
             </h1>
-            <p className="text-lg text-cream/70 leading-relaxed">
+            <p className="text-lg text-cream/80 leading-relaxed">
               Our board provides strategic oversight and ensures we remain true to our mission of empowering the next generation.
             </p>
           </motion.div>
         </div>
       </section>
+
 
       {/* Board Members Section */}
       <section className="py-20 md:py-28 bg-cream">
