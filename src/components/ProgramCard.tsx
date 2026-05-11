@@ -42,24 +42,42 @@ export default function ProgramCard({
       className="group rounded-2xl bg-white border border-cream-warm hover:border-gold/30 transition-all duration-300 hover:shadow-xl hover:shadow-gold/5 overflow-hidden flex flex-col h-full"
     >
       {/* Program Visual */}
-      <div className="relative h-48 w-full overflow-hidden rounded-t-2xl bg-gradient-to-br from-navy/90 via-slate-900 to-navy">
+      <div className="relative h-48 w-full overflow-hidden rounded-t-2xl bg-navy">
+        {(() => {
+          const logos: Record<string, string> = {
+            stem: "/images/stem_logo.png",
+            utme: "/images/jamblogo.png",
+            waec: "/images/Waec_logo.png",
+            saat: "/images/Saat.png",
+            mentorship: "/images/Mentorship.png",
+            scholarship: "/images/Scholarship.png",
+          };
+          const logoSrc = logos[program.id];
+          if (!logoSrc) {
+            return (
+              <div className="absolute inset-0 bg-gradient-to-br from-navy/90 via-slate-900 to-navy" />
+            );
+          }
+          return (
+            <>
+              <img
+                src={logoSrc}
+                alt=""
+                className="absolute inset-0 w-full h-full object-cover opacity-40 group-hover:scale-110 transition-transform duration-500"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-navy via-navy/40 to-transparent" />
+            </>
+          );
+        })()}
+        
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.08)_0%,_transparent_45%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,_rgba(255,255,255,0.08)_10%,_transparent_10%)_0_0/18px_18px] opacity-30" />
+        
         <div className="absolute top-4 left-4 z-20 w-14 h-14 rounded-2xl bg-cream/90 shadow-lg flex items-center justify-center transition-all duration-300 group-hover:bg-gold">
           <Icon className="w-7 h-7 text-navy group-hover:text-cream" />
         </div>
         <div className="absolute bottom-4 left-4 z-20 rounded-full border border-cream/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cream">
           {program.title}
         </div>
-        {program.id === "utme" && (
-          <div className="absolute bottom-4 right-4 z-20 w-12 h-12">
-            <img
-              src="/images/jamblogo.png"
-              alt="JAMB Logo"
-              className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
-            />
-          </div>
-        )}
       </div>
 
       <div className="p-6 md:p-8 flex-1 flex flex-col">

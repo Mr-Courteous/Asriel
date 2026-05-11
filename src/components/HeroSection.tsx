@@ -153,20 +153,15 @@ export default function HeroSection() {
             className="mt-10 flex flex-wrap justify-center gap-3"
           >
             {[
-              { label: "UTME Preparation", image: "/images/jamblogo.png" },
-              { label: "STEM Training", image: "/images/programs_hero_bg.png" },
-              { label: "WAEC / GCE Coaching", image: "/images/programs_hero_bg.png" },
-              { label: "Mentorship", image: "/images/programs_hero_bg.png" }
+              { label: "UTME Preparation" },
+              { label: "STEM Training" },
+              { label: "WAEC / GCE Coaching" },
+              { label: "Mentorship" }
             ].map((item) => (
               <div
                 key={item.label}
                 className="rounded-full border border-cream/20 bg-cream/10 px-4 py-2 flex items-center gap-2"
               >
-                <img
-                  src={item.image}
-                  alt={item.label}
-                  className="w-6 h-6 rounded-full object-cover"
-                />
                 <span className="text-sm font-semibold uppercase tracking-[0.25em] text-cream/90">
                   {item.label}
                 </span>
