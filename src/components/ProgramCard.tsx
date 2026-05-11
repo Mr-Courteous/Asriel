@@ -51,6 +51,15 @@ export default function ProgramCard({
         <div className="absolute bottom-4 left-4 z-20 rounded-full border border-cream/20 bg-white/10 px-3 py-1 text-xs uppercase tracking-[0.2em] text-cream">
           {program.title}
         </div>
+        {program.id === "utme" && (
+          <div className="absolute bottom-4 right-4 z-20 w-12 h-12">
+            <img
+              src="/images/jamblogo.png"
+              alt="JAMB Logo"
+              className="w-full h-full object-contain opacity-80 group-hover:opacity-100 transition-opacity duration-300"
+            />
+          </div>
+        )}
       </div>
 
       <div className="p-6 md:p-8 flex-1 flex flex-col">

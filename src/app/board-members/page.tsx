@@ -22,6 +22,12 @@ const boardMembers = [
     bio: "Leading innovative STEM programs and technical training for students to prepare them for the future.",
     icon: Briefcase,
   },
+  {
+    name: "LMD",
+    role: "Founder",
+    bio: "Visionary founder dedicated to the foundation's core mission and long-term impact.",
+    icon: Award,
+  },
 ];
 
 export default function BoardMembersPage() {

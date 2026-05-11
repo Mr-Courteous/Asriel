@@ -153,7 +153,7 @@ export default function HeroSection() {
             className="mt-10 flex flex-wrap justify-center gap-3"
           >
             {[
-              { label: "UTME Preparation", image: "/images/utme_logo.png" },
+              { label: "UTME Preparation", image: "/images/jamblogo.png" },
               { label: "STEM Training", image: "/images/programs_hero_bg.png" },
               { label: "WAEC / GCE Coaching", image: "/images/programs_hero_bg.png" },
               { label: "Mentorship", image: "/images/programs_hero_bg.png" }
