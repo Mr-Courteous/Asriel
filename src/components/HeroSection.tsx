@@ -91,6 +91,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-b from-navy/30 via-transparent to-navy/70" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,168,76,0.15)_0%,_transparent_60%)]" />
 
+
       {/* Particle canvas */}
       <canvas
         ref={canvasRef}
@@ -152,17 +153,24 @@ export default function HeroSection() {
             className="mt-10 flex flex-wrap justify-center gap-3"
           >
             {[
-              "UTME Preparation",
-              "STEM Training",
-              "WAEC / GCE Coaching",
-              "Mentorship"
-            ].map((label) => (
-              <span
-                key={label}
-                className="rounded-full border border-cream/20 bg-cream/10 px-4 py-2 text-sm font-semibold uppercase tracking-[0.25em] text-cream/90"
+              { label: "UTME Preparation", image: "/images/utme_logo.png" },
+              { label: "STEM Training", image: "/images/programs_hero_bg.png" },
+              { label: "WAEC / GCE Coaching", image: "/images/programs_hero_bg.png" },
+              { label: "Mentorship", image: "/images/programs_hero_bg.png" }
+            ].map((item) => (
+              <div
+                key={item.label}
+                className="rounded-full border border-cream/20 bg-cream/10 px-4 py-2 flex items-center gap-2"
               >
-                {label}
-              </span>
+                <img
+                  src={item.image}
+                  alt={item.label}
+                  className="w-6 h-6 rounded-full object-cover"
+                />
+                <span className="text-sm font-semibold uppercase tracking-[0.25em] text-cream/90">
+                  {item.label}
+                </span>
+              </div>
             ))}
           </motion.div>
         </div>

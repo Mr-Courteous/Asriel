@@ -28,20 +28,18 @@ export default function BoardMembersPage() {
   return (
     <>
       {/* Hero */}
-      <section className="min-h-[60vh] pt-32 pb-20 md:pb-28 bg-navy relative overflow-hidden grain-overlay flex items-center">
-        {/* Background image */}
-        <motion.img
-          initial={{ scale: 1.08, opacity: 0 }}
-          animate={{ scale: 1, opacity: 0.65 }}
-          transition={{ duration: 2, ease: "easeOut" }}
-          src="/images/board_hero_bg.png"
-          alt="Board members background"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        {/* Single light overlay + bottom fade */}
-        <div className="absolute inset-0 bg-navy/40" />
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-navy/20 to-navy/80" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(201,168,76,0.18)_0%,_transparent_60%)]" />
+      <section
+        className="min-h-[60vh] pt-32 pb-20 md:pb-28 relative flex items-center"
+        style={{
+          backgroundImage: "url('/images/programs_hero_bg.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+        }}
+      >
+        {/* Single semi-transparent overlay for text readability */}
+        <div className="absolute inset-0" style={{ backgroundColor: "rgba(10,22,40,0.55)" }} />
+
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 w-full">
           <motion.div

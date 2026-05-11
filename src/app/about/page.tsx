@@ -9,7 +9,7 @@ export default function AboutPage() {
     <>
       {/* Hero */}
       <section
-        className="min-h-[60vh] pt-32 pb-20 md:pb-28 relative flex items-center"
+        className="pt-32 pb-20 md:pb-28 relative flex items-center"
         style={{
           backgroundImage: "url('/images/programs_hero_bg.png')",
           backgroundSize: "cover",
@@ -19,6 +19,7 @@ export default function AboutPage() {
       >
         {/* Single semi-transparent overlay for text readability */}
         <div className="absolute inset-0" style={{ backgroundColor: "rgba(10,22,40,0.55)" }} />
+
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 w-full">
           <motion.div

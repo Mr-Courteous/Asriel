@@ -19,6 +19,7 @@ export default function GalleryPage() {
         {/* Single semi-transparent overlay for text readability */}
         <div className="absolute inset-0" style={{ backgroundColor: "rgba(10,22,40,0.55)" }} />
 
+
         <div className="container mx-auto px-4 md:px-6 relative z-10 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
