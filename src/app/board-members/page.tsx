@@ -17,7 +17,7 @@ const boardMembers = [
     icon: Shield,
   },
   {
-    name: "Michael Faniran",
+    name: "Omotayo Faniran",
     role: "STEM Director",
     bio: "Leading innovative STEM programs and technical training for students to prepare them for the future.",
     icon: Briefcase,
