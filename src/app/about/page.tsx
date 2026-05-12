@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Target, Eye, Heart, Users, Globe, Leaf, Award } from "lucide-react";
+import Link from "next/link";
 import { foundation } from "@/lib/constants";
 
 export default function AboutPage() {
@@ -33,10 +34,15 @@ export default function AboutPage() {
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold hero-heading mb-6" style={{ color: "#faf7f2" }}>
               Our Story
             </h1>
-            <p className="text-lg leading-relaxed" style={{ color: "rgba(250,247,242,0.82)" }}>
+            <p className="text-lg leading-relaxed mb-8" style={{ color: "rgba(250,247,242,0.82)" }}>
               Founded on a commitment to excellence and education, Asriel
               Foundation has been transforming lives since 2011.
             </p>
+            <div className="flex justify-center">
+              <Link href="/board-members" className="btn-primary">
+                Meet Our Board Members
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -184,10 +190,10 @@ export default function AboutPage() {
             <span className="inline-block px-4 py-1.5 rounded-full bg-gold/10 border border-gold/20 text-gold text-sm font-medium mb-6">
               Diversity, Equity & Inclusion
             </span>
-            <h2 className="font-display text-3xl md:text-4xl font-bold text-cream mb-6">
+            <h2 className="font-display text-3xl md:text-4xl font-bold text-white mb-6 hero-heading">
               Every Child Matters
             </h2>
-            <p className="text-lg text-cream/70 leading-relaxed">
+            <p className="text-lg text-white/70 leading-relaxed">
               At Asriel Foundation, we believe that every child deserves
               opportunity, regardless of race, tribe, background, or
               circumstance. We actively work to remove barriers to education and
@@ -248,12 +254,15 @@ export default function AboutPage() {
               contribution helps us continue our work.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <a href="/donate" className="btn-primary">
+              <Link href="/donate" className="btn-primary">
                 Donate Now
-              </a>
-              <a href="/contact" className="btn-outline border-navy text-navy hover:bg-navy hover:text-cream">
+              </Link>
+              <Link href="/board-members" className="btn-outline border-navy text-navy hover:bg-navy hover:text-cream">
+                Meet Our Board Members
+              </Link>
+              <Link href="/contact" className="btn-outline border-navy text-navy hover:bg-navy hover:text-cream">
                 Get Involved
-              </a>
+              </Link>
             </div>
           </motion.div>
         </div>

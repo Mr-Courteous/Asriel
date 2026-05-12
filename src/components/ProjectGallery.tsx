@@ -2,11 +2,23 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { X, Maximize2 } from "lucide-react";
+import { X, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { galleryImages } from "@/lib/constants";
 
 export default function ProjectGallery() {
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
+
+  const handleNext = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedIndex === null) return;
+    setSelectedIndex((selectedIndex + 1) % galleryImages.length);
+  };
+
+  const handlePrev = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (selectedIndex === null) return;
+    setSelectedIndex((selectedIndex - 1 + galleryImages.length) % galleryImages.length);
+  };
 
   return (
     <section className="py-20 md:py-28 bg-cream">
@@ -39,7 +51,7 @@ export default function ProjectGallery() {
               viewport={{ once: true }}
               transition={{ delay: (index % 10) * 0.05 }}
               className="group relative aspect-square cursor-pointer overflow-hidden rounded-2xl bg-navy/5 shadow-md hover:shadow-xl transition-all duration-300"
-              onClick={() => setSelectedImage(img)}
+              onClick={() => setSelectedIndex(index)}
             >
               <img
                 src={`/images/New/${img}`}
@@ -59,13 +71,13 @@ export default function ProjectGallery() {
 
       {/* Lightbox */}
       <AnimatePresence>
-        {selectedImage && (
+        {selectedIndex !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             className="fixed inset-0 z-[100] flex items-center justify-center bg-navy/95 p-4 md:p-10 backdrop-blur-xl"
-            onClick={() => setSelectedImage(null)}
+            onClick={() => setSelectedIndex(null)}
           >
             <motion.button
               initial={{ opacity: 0, scale: 0.5 }}
@@ -73,25 +85,47 @@ export default function ProjectGallery() {
               className="absolute top-6 right-6 z-[110] rounded-full bg-white/10 p-3 text-white transition-colors hover:bg-white/20"
               onClick={(e) => {
                 e.stopPropagation();
-                setSelectedImage(null);
+                setSelectedIndex(null);
               }}
             >
               <X size={24} />
             </motion.button>
+
+            {/* Navigation Buttons */}
+            <button
+              className="absolute left-4 md:left-8 z-[110] p-3 rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white transition-all duration-300 backdrop-blur-sm"
+              onClick={handlePrev}
+            >
+              <ChevronLeft size={36} />
+            </button>
+
+            <button
+              className="absolute right-4 md:right-8 z-[110] p-3 rounded-full bg-white/5 text-white/50 hover:bg-white/10 hover:text-white transition-all duration-300 backdrop-blur-sm"
+              onClick={handleNext}
+            >
+              <ChevronRight size={36} />
+            </button>
             
             <motion.div
-              initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.9, opacity: 0, y: 20 }}
+              key={selectedIndex}
+              initial={{ scale: 0.9, opacity: 0, x: 20 }}
+              animate={{ scale: 1, opacity: 1, x: 0 }}
+              exit={{ scale: 0.9, opacity: 0, x: -20 }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
               className="relative max-h-full max-w-6xl w-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <img
-                src={`/images/New/${selectedImage}`}
+                src={`/images/New/${galleryImages[selectedIndex]}`}
                 alt="Enlarged gallery image"
                 className="max-h-[85vh] w-auto rounded-2xl shadow-2xl border border-white/10"
               />
             </motion.div>
+
+            {/* Image Counter */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 text-white/40 text-sm font-medium">
+              {selectedIndex + 1} / {galleryImages.length}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

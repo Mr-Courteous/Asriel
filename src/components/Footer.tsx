@@ -9,7 +9,7 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-navy text-cream/80 pt-16 pb-8">
+    <footer className="bg-cream-warm text-navy pt-16 pb-8 border-t border-navy/5">
       <div className="container mx-auto px-4 md:px-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
           {/* Brand */}
@@ -23,7 +23,7 @@ export default function Footer() {
                 />
               </div>
             </div>
-            <p className="text-sm leading-relaxed text-cream/60">
+            <p className="text-sm leading-relaxed text-navy/60">
               {foundation.tagline}
               <br />
               {foundation.mission}
@@ -35,7 +35,7 @@ export default function Footer() {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-full bg-navy-light flex items-center justify-center hover:bg-gold transition-colors duration-300"
+                  className="w-10 h-10 rounded-full bg-navy/5 flex items-center justify-center hover:bg-gold transition-colors duration-300"
                   aria-label={social.label}
                 >
                   {social.icon === "Facebook" && <Facebook size={18} />}
@@ -48,7 +48,7 @@ export default function Footer() {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h4 className="font-display text-lg text-cream font-semibold">
+            <h4 className="font-display text-lg text-navy font-semibold">
               Quick Links
             </h4>
             <ul className="space-y-2">
@@ -67,7 +67,7 @@ export default function Footer() {
 
           {/* Contact Info */}
           <div className="space-y-4">
-            <h4 className="font-display text-lg text-cream font-semibold">
+            <h4 className="font-display text-lg text-navy font-semibold">
               Contact Us
             </h4>
             <ul className="space-y-3">
@@ -78,10 +78,10 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Mail size={18} className="text-gold flex-shrink-0" />
                 <a
-                  href="mailto:info@asrielfoundation.org"
+                  href="mailto:info@asrielfoundation.com"
                   className="text-sm hover:text-gold transition-colors duration-200"
                 >
-                  info@asrielfoundation.org
+                  info@asrielfoundation.com
                 </a>
               </li>
             </ul>
@@ -89,17 +89,17 @@ export default function Footer() {
 
           {/* Newsletter */}
           <div className="space-y-4">
-            <h4 className="font-display text-lg text-cream font-semibold">
+            <h4 className="font-display text-lg text-navy font-semibold">
               Stay Updated
             </h4>
-            <p className="text-sm text-cream/60">
+            <p className="text-sm text-navy/60">
               Subscribe to our newsletter for updates on our programs and impact.
             </p>
             <form className="flex gap-2">
               <input
                 type="email"
                 placeholder="Your email"
-                className="flex-1 px-4 py-2 rounded-full bg-navy-light border border-navy-light text-cream placeholder:text-cream/40 focus:outline-none focus:border-gold"
+                className="flex-1 px-4 py-2 rounded-full bg-white border border-navy/10 text-navy placeholder:text-navy/40 focus:outline-none focus:border-gold"
               />
               <button
                 type="submit"
@@ -112,16 +112,10 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-navy-light">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-cream/40">
-              © {currentYear} {foundation.name}. All rights reserved.
-            </p>
-            <p className="text-sm text-cream/40">
-              {foundation.name} is a registered 501(c)(3) non-profit. EIN:{" "}
-              {foundation.ein}
-            </p>
-          </div>
+        <div className="pt-8 border-t border-navy/10 text-center">
+          <p className="text-sm text-navy/40">
+            © {currentYear} {foundation.name}. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

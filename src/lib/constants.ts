@@ -140,7 +140,6 @@ export const donationTiers = [
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/board-members", label: "Board Members" },
   { href: "/programs", label: "Programs" },
   { href: "/gallery", label: "Gallery" },
   { href: "/donate", label: "Donate" },

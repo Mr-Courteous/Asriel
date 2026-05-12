@@ -333,10 +333,10 @@ export default function ContactPage() {
                   <div>
                     <h3 className="font-semibold text-navy mb-1">Email</h3>
                     <a
-                      href="mailto:info@asrielfoundation.org"
+                      href="mailto:info@asrielfoundation.com"
                       className="text-navy/70 hover:text-gold transition-colors"
                     >
-                      info@asrielfoundation.org
+                      info@asrielfoundation.com
                     </a>
                   </div>
                 </div>
@@ -348,7 +348,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="font-semibold text-navy mb-1">Phone</h3>
-                    <p className="text-navy/70">+1 (555) 123-4567</p>
+                    <p className="text-navy/70">+1 (774) 360-3242</p>
                   </div>
                 </div>
               </div>

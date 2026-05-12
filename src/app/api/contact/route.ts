@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     // Example integration with Resend:
     // await resend.emails.send({
     //   from: 'contact@asrielfoundation.org',
-    //   to: 'info@asrielfoundation.org',
+    //   to: 'info@asrielfoundation.com',
     //   subject: `New Contact: ${subject}`,
     //   html: `
     //     <h2>New Contact Form Submission</h2>

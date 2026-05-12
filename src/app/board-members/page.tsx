@@ -5,28 +5,28 @@ import { Users, Award, Shield, Briefcase } from "lucide-react";
 
 const boardMembers = [
   {
+    name: "LMD",
+    role: "Founder",
+    bio: "Visionary founder dedicated to the foundation's core mission and long-term impact.",
+    icon: Award,
+  },
+  {
     name: "Christiana Lamidi",
-    role: "Founder & Executive Director",
+    role: "Secretary",
     bio: "Educator and Mentor Expert for over 20 years, dedicated to transforming lives through education.",
     icon: Award,
+  },
+  {
+    name: "Omotayo Faniran",
+    role: "Board Member",
+    bio: "Leading innovative STEM programs and technical training for students to prepare them for the future.",
+    icon: Briefcase,
   },
   {
     name: "Olasupo Samuel Awoleru",
     role: "Board Member",
     bio: "Committed to organizational excellence and community impact with years of experience in leadership.",
     icon: Shield,
-  },
-  {
-    name: "Omotayo Faniran",
-    role: "STEM Director",
-    bio: "Leading innovative STEM programs and technical training for students to prepare them for the future.",
-    icon: Briefcase,
-  },
-  {
-    name: "LMD",
-    role: "Founder",
-    bio: "Visionary founder dedicated to the foundation's core mission and long-term impact.",
-    icon: Award,
   },
 ];
 
@@ -70,30 +70,62 @@ export default function BoardMembersPage() {
       {/* Board Members Section */}
       <section className="py-20 md:py-28 bg-cream">
         <div className="container mx-auto px-4 md:px-6">
+          {/* Founder - Top & Middle */}
+          <div className="flex justify-center mb-16">
+            {(() => {
+              const FounderIcon = boardMembers[0].icon;
+              return (
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="p-8 rounded-2xl bg-white border border-cream-warm shadow-sm hover:shadow-md transition-all duration-300 text-center max-w-sm w-full"
+                >
+                  <div className="w-20 h-20 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
+                    <FounderIcon className="w-10 h-10 text-gold" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-navy mb-2">
+                    {boardMembers[0].name}
+                  </h3>
+                  <p className="text-gold text-sm font-semibold uppercase tracking-wider mb-4">
+                    {boardMembers[0].role}
+                  </p>
+                  <p className="text-navy/60 leading-relaxed">
+                    {boardMembers[0].bio}
+                  </p>
+                </motion.div>
+              );
+            })()}
+          </div>
+
+          {/* Other Members Grid */}
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            {boardMembers.map((member, index) => (
-              <motion.div
-                key={member.name}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="p-8 rounded-2xl bg-white border border-cream-warm shadow-sm hover:shadow-md transition-all duration-300 text-center"
-              >
-                <div className="w-20 h-20 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
-                  <member.icon className="w-10 h-10 text-gold" />
-                </div>
-                <h3 className="font-display text-xl font-bold text-navy mb-2">
-                  {member.name}
-                </h3>
-                <p className="text-gold text-sm font-semibold uppercase tracking-wider mb-4">
-                  {member.role}
-                </p>
-                <p className="text-navy/60 leading-relaxed">
-                  {member.bio}
-                </p>
-              </motion.div>
-            ))}
+            {boardMembers.slice(1).map((member, index) => {
+              const Icon = member.icon;
+              return (
+                <motion.div
+                  key={member.name}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.1 }}
+                  className="p-8 rounded-2xl bg-white border border-cream-warm shadow-sm hover:shadow-md transition-all duration-300 text-center"
+                >
+                  <div className="w-20 h-20 rounded-full bg-gold/10 flex items-center justify-center mx-auto mb-6">
+                    <Icon className="w-10 h-10 text-gold" />
+                  </div>
+                  <h3 className="font-display text-xl font-bold text-navy mb-2">
+                    {member.name}
+                  </h3>
+                  <p className="text-gold text-sm font-semibold uppercase tracking-wider mb-4">
+                    {member.role}
+                  </p>
+                  <p className="text-navy/60 leading-relaxed">
+                    {member.bio}
+                  </p>
+                </motion.div>
+              );
+            })}
           </div>
         </div>
       </section>
