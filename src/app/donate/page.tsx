@@ -63,6 +63,9 @@ export default function DonatePage() {
                 Your generosity will make a real difference in the lives of
                 students who need it most.
               </p>
+              <p className="text-base leading-relaxed mt-6" style={{ color: "rgba(250,247,242,0.82)" }}>
+                {foundation.nonprofitStatement}
+              </p>
             </motion.div>
           </div>
         </section>
@@ -135,6 +138,9 @@ export default function DonatePage() {
             <p className="text-lg leading-relaxed" style={{ color: "rgba(250,247,242,0.82)" }}>
               Your donation helps provide education, resources, and hope to
               students who need it most.
+            </p>
+            <p className="text-base leading-relaxed mt-6" style={{ color: "rgba(250,247,242,0.82)" }}>
+              {foundation.nonprofitStatement}
             </p>
           </motion.div>
         </div>
@@ -281,11 +287,7 @@ export default function DonatePage() {
 
                   <div className="mt-6 pt-6 border-t border-cream-warm">
                     <p className="text-xs text-navy/50 text-center">
-                      {foundation.name} is a registered 501(c)(3) non-profit
-                      organization. EIN: {foundation.ein}
-                    </p>
-                    <p className="text-xs text-navy/50 text-center mt-2">
-                      Your donation may be tax-deductible.
+                      {foundation.nonprofitStatement}
                     </p>
                   </div>
                 </div>

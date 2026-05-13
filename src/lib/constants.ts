@@ -12,7 +12,9 @@ export const foundation = {
     "We provide scholarships, STEM training, and mentorship to underprivileged students in Richmond, Texas and beyond.",
   ctaText: "Be the reason a child succeeds.",
   address: "Richmond, Texas",
-  ein: "XX-XXXXXXX",
+  phone: "+1 (774) 360-3242",
+  nonprofitStatement:
+    "Asriel Foundations is a registered 501(c)(3) non-profit organization. Your donation may be tax-deductible.",
 };
 
 export const impactStats = [

@@ -2,6 +2,7 @@
 
 import ProjectGallery from "@/components/ProjectGallery";
 import { motion } from "framer-motion";
+import { foundation } from "@/lib/constants";
 
 export default function GalleryPage() {
   return (
@@ -34,6 +35,9 @@ export default function GalleryPage() {
             </h1>
             <p className="text-lg leading-relaxed" style={{ color: "rgba(250,247,242,0.82)" }}>
               A visual journey of our work and the lives being transformed in our community.
+            </p>
+            <p className="text-base leading-relaxed mt-6" style={{ color: "rgba(250,247,242,0.82)" }}>
+              {foundation.nonprofitStatement}
             </p>
           </motion.div>
         </div>

@@ -84,6 +84,15 @@ export default function Footer() {
                   info@asrielfoundation.com
                 </a>
               </li>
+              <li className="flex items-center gap-3">
+                <Phone size={18} className="text-gold flex-shrink-0" />
+                <a
+                  href="tel:+11234567890"
+                  className="text-sm hover:text-gold transition-colors duration-200"
+                >
+                  {foundation.phone}
+                </a>
+              </li>
             </ul>
           </div>
 

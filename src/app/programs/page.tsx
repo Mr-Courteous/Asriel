@@ -12,6 +12,7 @@ import {
   CheckCircle,
   LucideIcon,
 } from "lucide-react";
+import { foundation } from "@/lib/constants";
 import { programs, programLogos } from "@/lib/constants";
 
 const iconMap: Record<string, LucideIcon> = {
@@ -55,6 +56,9 @@ export default function ProgramsPage() {
             <p className="text-lg leading-relaxed" style={{ color: "rgba(250,247,242,0.82)" }}>
               Comprehensive support designed to help students succeed
               academically, technologically, and spiritually.
+            </p>
+            <p className="text-base leading-relaxed mt-6" style={{ color: "rgba(250,247,242,0.82)" }}>
+              {foundation.nonprofitStatement}
             </p>
           </motion.div>
         </div>

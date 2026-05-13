@@ -90,6 +90,9 @@ export default function ContactPage() {
                 We appreciate you reaching out. Our team will get back to you
                 within 24-48 hours.
               </p>
+            <p className="text-base leading-relaxed mt-6" style={{ color: "rgba(250,247,242,0.82)" }}>
+                {foundation.nonprofitStatement}
+              </p>
             </motion.div>
           </div>
         </section>
@@ -165,6 +168,9 @@ export default function ContactPage() {
             <p className="text-lg leading-relaxed" style={{ color: "rgba(250,247,242,0.82)" }}>
               Have questions about our programs or want to get involved? We&apos;d
               love to hear from you.
+            </p>
+            <p className="text-base leading-relaxed mt-6" style={{ color: "rgba(250,247,242,0.82)" }}>
+              {foundation.nonprofitStatement}
             </p>
           </motion.div>
         </div>

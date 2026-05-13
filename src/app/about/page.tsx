@@ -34,9 +34,12 @@ export default function AboutPage() {
             <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold hero-heading mb-6" style={{ color: "#faf7f2" }}>
               Our Story
             </h1>
-            <p className="text-lg leading-relaxed mb-8" style={{ color: "rgba(250,247,242,0.82)" }}>
+            <p className="text-lg leading-relaxed mb-6" style={{ color: "rgba(250,247,242,0.82)" }}>
               Founded on a commitment to excellence and education, Asriel
               Foundation has been transforming lives since 2011.
+            </p>
+            <p className="text-base leading-relaxed mb-8" style={{ color: "rgba(250,247,242,0.82)" }}>
+              {foundation.nonprofitStatement}
             </p>
             <div className="flex justify-center">
               <Link href="/board-members" className="btn-primary">

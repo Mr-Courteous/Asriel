@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { Users, Award, Shield, Briefcase } from "lucide-react";
+import { foundation } from "@/lib/constants";
 
 const boardMembers = [
   {
@@ -61,6 +62,9 @@ export default function BoardMembersPage() {
             </h1>
             <p className="text-lg text-cream/80 leading-relaxed">
               Our board provides strategic oversight and ensures we remain true to our mission of empowering the next generation.
+            </p>
+            <p className="text-base text-cream/80 leading-relaxed mt-6">
+              {foundation.nonprofitStatement}
             </p>
           </motion.div>
         </div>
