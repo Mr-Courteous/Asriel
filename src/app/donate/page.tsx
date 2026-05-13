@@ -163,19 +163,17 @@ export default function DonatePage() {
                       whileHover={{ scale: 1.02 }}
                       whileTap={{ scale: 0.98 }}
                       onClick={() => setSelectedAmount(tier.amount)}
-                      className={`p-5 rounded-xl text-left transition-all duration-300 ${
-                        selectedAmount === tier.amount
+                      className={`p-5 rounded-xl text-left transition-all duration-300 ${selectedAmount === tier.amount
                           ? "bg-gold text-navy shadow-lg shadow-gold/20"
                           : "bg-white border border-cream-warm hover:border-gold/30 hover:shadow-lg"
-                      }`}
+                        }`}
                     >
                       <div className="flex items-center gap-3 mb-2">
                         <div
-                          className={`w-8 h-8 rounded-full flex items-center justify-center ${
-                            selectedAmount === tier.amount
+                          className={`w-8 h-8 rounded-full flex items-center justify-center ${selectedAmount === tier.amount
                               ? "bg-navy"
                               : "bg-gold/10"
-                          }`}
+                            }`}
                         >
                           <Heart
                             size={16}
@@ -187,11 +185,10 @@ export default function DonatePage() {
                           />
                         </div>
                         <span
-                          className={`font-display text-2xl font-bold ${
-                            selectedAmount === tier.amount
+                          className={`font-display text-2xl font-bold ${selectedAmount === tier.amount
                               ? "text-navy"
                               : "text-navy"
-                          }`}
+                            }`}
                         >
                           {tier.amount === "custom"
                             ? "Custom"
@@ -199,11 +196,10 @@ export default function DonatePage() {
                         </span>
                       </div>
                       <p
-                        className={`text-sm ${
-                          selectedAmount === tier.amount
+                        className={`text-sm ${selectedAmount === tier.amount
                             ? "text-navy/70"
                             : "text-navy/60"
-                        }`}
+                          }`}
                       >
                         {tier.impact}
                       </p>

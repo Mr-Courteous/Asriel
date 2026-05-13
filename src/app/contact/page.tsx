@@ -384,13 +384,13 @@ export default function ContactPage() {
               </div>
 
               {/* 501(c)(3) Notice */}
-              <div className="p-6 bg-cream-warm rounded-xl">
+              {/* <div className="p-6 bg-cream-warm rounded-xl">
                 <p className="text-sm text-navy/70">
                   <strong className="text-navy">{foundation.name}</strong> is a
                   registered 501(c)(3) non-profit organization. Your support is
                   tax-deductible to the extent allowed by law.
                 </p>
-              </div>
+              </div> */}
             </motion.div>
           </div>
         </div>
