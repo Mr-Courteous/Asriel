@@ -122,7 +122,7 @@ export default function HomePage() {
       <TestimonialCarousel />
 
       {/* Partners Section */}
-      <section className="py-16 md:py-20 bg-cream">
+      {/* <section className="py-16 md:py-20 bg-cream">
         <div className="container mx-auto px-4 md:px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -157,7 +157,7 @@ export default function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* CTA Banner */}
       <section className="py-20 md:py-28 bg-gold relative overflow-hidden">

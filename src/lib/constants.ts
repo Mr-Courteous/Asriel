@@ -103,21 +103,21 @@ export const testimonials = [
     id: 1,
     quote:
       "Asriel Foundation gave me the resources I needed to excel in my studies. Now I'm in university pursuing my dreams.",
-    name: "Sarah M.",
+    name: "Timilehin Idowu",
     result: "University Student, Computer Science",
   },
   {
     id: 2,
     quote:
       "The mentorship program changed my life. I went from struggling in math to being top of my class.",
-    name: "James K.",
+    name: "Adeyemi Ademola",
     result: "High School Graduate, Engineering",
   },
   {
     id: 3,
     quote:
       "Thanks to the STEM training, I built my first robot at age 14. I'm now pursuing robotics in college.",
-    name: "Emily O.",
+    name: "Olorunfemi Victor",
     result: "College Sophomore, Robotics",
   },
 ];
