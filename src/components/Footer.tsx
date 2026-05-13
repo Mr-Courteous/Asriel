@@ -87,25 +87,34 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Newsletter */}
+          {/* Contact Redirect */}
           <div className="space-y-4">
             <h4 className="font-display text-lg text-navy font-semibold">
-              Stay Updated
+              Get in Touch
             </h4>
             <p className="text-sm text-navy/60">
-              Subscribe to our newsletter for updates on our programs and impact.
+              Have questions? Enter your email and we'll help you get started.
             </p>
-            <form className="flex gap-2">
+            <form 
+              className="flex gap-2"
+              onSubmit={(e) => {
+                e.preventDefault();
+                const email = (e.currentTarget.elements.namedItem('email') as HTMLInputElement).value;
+                window.location.href = `/contact?email=${encodeURIComponent(email)}`;
+              }}
+            >
               <input
                 type="email"
+                name="email"
+                required
                 placeholder="Your email"
                 className="flex-1 px-4 py-2 rounded-full bg-white border border-navy/10 text-navy placeholder:text-navy/40 focus:outline-none focus:border-gold"
               />
               <button
                 type="submit"
-                className="px-4 py-2 bg-gold text-navy rounded-full font-semibold hover:bg-gold-light transition-colors duration-200"
+                className="px-4 py-2 bg-gold text-navy rounded-full font-semibold hover:bg-gold-light transition-colors duration-200 whitespace-nowrap"
               >
-                Join
+                Contact Us
               </button>
             </form>
           </div>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, FormEvent } from "react";
+import { useState, FormEvent, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send, CheckCircle, Loader2 } from "lucide-react";
 import { foundation } from "@/lib/constants";
@@ -22,6 +22,15 @@ export default function ContactPage() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
+
+  // Auto-fill email from query parameter
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const emailParam = params.get("email");
+    if (emailParam) {
+      setFormData((prev) => ({ ...prev, email: emailParam }));
+    }
+  }, []);
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();

@@ -1,60 +1,53 @@
+import { Resend } from "resend";
 import { NextResponse } from "next/server";
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
     const { name, email, subject, message } = body;
 
-    // Validate required fields
+    // Validate that all four fields are present
     if (!name || !email || !subject || !message) {
       return NextResponse.json(
-        { error: "All fields are required" },
+        { error: "Missing required fields" },
         { status: 400 }
       );
     }
 
-    // Validate email format
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        { error: "Invalid email format" },
-        { status: 400 }
-      );
-    }
-
-    // In production, you would integrate with Resend, SendGrid, or EmailJS here
-    // For now, we'll log the submission and return success
-    console.log("Contact form submission:", {
-      name,
-      email,
-      subject,
-      message,
-      timestamp: new Date().toISOString(),
+    // Send email using Resend
+    const { data, error } = await resend.emails.send({
+      from: "Asriel Foundation <onboarding@resend.dev>",
+      to: process.env.CONTACT_EMAIL!,
+      subject: `[${subject}] New message from ${name}`,
+      html: `
+        <div style="font-family: sans-serif; line-height: 1.6; color: #333; max-width: 600px; margin: auto; padding: 20px; border: 1px solid #eee; border-radius: 10px;">
+          <h2 style="color: #0a1628; border-bottom: 2px solid #c9a84c; padding-bottom: 10px;">New Contact Form Submission</h2>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <p><strong>Subject:</strong> ${subject}</p>
+          <div style="margin-top: 20px; padding: 15px; background-color: #f9f9f9; border-left: 4px solid #c9a84c;">
+            <p><strong>Message:</strong></p>
+            <p style="white-space: pre-wrap;">${message}</p>
+          </div>
+          <footer style="margin-top: 30px; font-size: 12px; color: #777; text-align: center;">
+            Sent from Asriel Foundation Website
+          </footer>
+        </div>
+      `,
     });
 
-    // Example integration with Resend:
-    // await resend.emails.send({
-    //   from: 'contact@asrielfoundation.org',
-    //   to: 'info@asrielfoundation.com',
-    //   subject: `New Contact: ${subject}`,
-    //   html: `
-    //     <h2>New Contact Form Submission</h2>
-    //     <p><strong>Name:</strong> ${name}</p>
-    //     <p><strong>Email:</strong> ${email}</p>
-    //     <p><strong>Subject:</strong> ${subject}</p>
-    //     <p><strong>Message:</strong></p>
-    //     <p>${message}</p>
-    //   `,
-    // });
+    if (error) {
+      console.error("Resend error:", error);
+      return NextResponse.json({ error: error.message }, { status: 500 });
+    }
 
+    return NextResponse.json({ success: true });
+  } catch (err: any) {
+    console.error("Contact API error:", err);
     return NextResponse.json(
-      { message: "Message sent successfully" },
-      { status: 200 }
-    );
-  } catch (error) {
-    console.error("Contact form error:", error);
-    return NextResponse.json(
-      { error: "Failed to send message" },
+      { error: "Internal server error" },
       { status: 500 }
     );
   }
