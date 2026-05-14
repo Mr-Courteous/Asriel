@@ -132,11 +132,11 @@ export const partners = [
 ];
 
 export const donationTiers = [
-  { amount: 10, impact: "Provides school supplies for one student" },
-  { amount: 25, impact: "Covers a student's exam registration fee" },
-  { amount: 50, impact: "Provides textbooks and learning materials for a month" },
-  { amount: 100, impact: "Funds a full scholarship for one student for a semester" },
-  { amount: "custom", impact: "Any amount helps us continue our mission" },
+  { amount: 10,  label: "$10",    impact: "Covers a student's exam registration" },
+  { amount: 25,  label: "$25",    impact: "Provides a month of tutoring materials" },
+  { amount: 50,  label: "$50",    impact: "Funds a full STEM workshop session" },
+  { amount: 100, label: "$100",   impact: "Sponsors a student for one term" },
+  { amount: "custom", label: "Custom", impact: "Any amount makes a real difference" },
 ];
 
 export const navLinks = [

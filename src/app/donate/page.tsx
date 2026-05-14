@@ -1,116 +1,57 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
-import { Heart, Check, LucideIcon } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Heart, Check, ArrowRight, Shield, ExternalLink } from "lucide-react";
 import { donationTiers, foundation } from "@/lib/constants";
-import PayPalDonateButton from "@/components/PayPalDonateButton";
+
+const PAYPAL_BASE = "https://www.paypal.com/donate";
+const PAYPAL_BUSINESS_EMAIL = "olulamidi@gmail.com";
+
+function buildPayPalUrl(amount?: number | string) {
+  const params = new URLSearchParams({
+    business: PAYPAL_BUSINESS_EMAIL,
+    currency_code: "USD",
+    item_name: "Asriel Foundation Donation",
+  });
+
+  if (amount && amount !== "custom") {
+    params.set("amount", String(amount));
+  }
+
+  return `${PAYPAL_BASE}?${params.toString()}`;
+}
 
 export default function DonatePage() {
   const [selectedAmount, setSelectedAmount] = useState<number | string | null>(
     null
   );
   const [customAmount, setCustomAmount] = useState("");
-  const [isDonationComplete, setIsDonationComplete] = useState(false);
+  const [customError, setCustomError] = useState("");
 
-  // Replace with your actual PayPal hosted button ID
-  // Get it from https://www.paypal.com/donate/buttons
-  const PAYPAL_BUTTON_ID = "YOUR_PAYPAL_HOSTED_BUTTON_ID";
+  const handleTierClick = (amount: number | string) => {
+    setSelectedAmount(amount);
+    setCustomAmount("");
+    setCustomError("");
 
-  const handleDonate = () => {
-    if (selectedAmount === "custom" && customAmount) {
-      // For custom amounts, redirect to PayPal donate page
-      window.open(
-        `https://www.paypal.com/donate/?hosted_button_id=${PAYPAL_BUTTON_ID}`,
-        "_blank"
-      );
-    } else if (selectedAmount && selectedAmount !== "custom") {
-      // For preset amounts, you would typically pass the amount to PayPal
-      // For now, we'll show the PayPal button which handles the donation
-      setIsDonationComplete(true);
+    if (amount !== "custom") {
+      window.open(buildPayPalUrl(amount), "_blank", "noopener,noreferrer");
     }
   };
 
-  if (isDonationComplete) {
-    return (
-      <>
-        {/* Hero */}
-        <section
-          className="min-h-[60vh] pt-32 pb-20 md:pb-28 relative flex items-center"
-          style={{
-            backgroundImage: "url('/images/programs_hero_bg.png')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        >
-          {/* Single semi-transparent overlay for text readability */}
-          <div className="absolute inset-0" style={{ backgroundColor: "rgba(10,22,40,0.55)" }} />
-
-          <div className="container mx-auto px-4 md:px-6 relative z-10 w-full">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="max-w-3xl mx-auto text-center"
-            >
-              <span className="inline-block px-4 py-1.5 rounded-full border text-sm font-medium mb-6" style={{ backgroundColor: "rgba(201,168,76,0.15)", borderColor: "rgba(201,168,76,0.3)", color: "#c9a84c" }}>
-                Thank You
-              </span>
-              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold hero-heading mb-6" style={{ color: "#faf7f2" }}>
-                Thank You for Your Support!
-              </h1>
-              <p className="text-lg leading-relaxed" style={{ color: "rgba(250,247,242,0.82)" }}>
-                Your generosity will make a real difference in the lives of
-                students who need it most.
-              </p>
-              <p className="text-base leading-relaxed mt-6" style={{ color: "rgba(250,247,242,0.82)" }}>
-                {foundation.nonprofitStatement}
-              </p>
-            </motion.div>
-          </div>
-        </section>
-
-        {/* Thank You Message */}
-        <section className="py-20 md:py-28 bg-cream">
-          <div className="container mx-auto px-4 md:px-6">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="max-w-2xl mx-auto text-center glass-card p-10"
-            >
-              <div className="w-20 h-20 rounded-full bg-gold/20 flex items-center justify-center mx-auto mb-6">
-                <Check className="w-10 h-10 text-gold" />
-              </div>
-              <h2 className="font-display text-2xl md:text-3xl font-bold text-navy mb-4">
-                Thank You for Your Donation!
-              </h2>
-              <p className="text-navy/70 leading-relaxed mb-6">
-                Your gift helps provide scholarships, STEM training, and
-                mentorship to underprivileged students. Together, we are
-                building a brighter future for the next generation of leaders.
-              </p>
-              <p className="text-sm text-navy/50">
-                {foundation.name} is a registered 501(c)(3) non-profit. Your
-                donation may be tax-deductible.
-              </p>
-              <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-                <a href="/" className="btn-primary">
-                  Return Home
-                </a>
-                <a href="/contact" className="btn-outline">
-                  Stay Connected
-                </a>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-      </>
-    );
-  }
+  const handleCustomDonate = () => {
+    const val = parseFloat(customAmount);
+    if (!customAmount || isNaN(val) || val <= 0) {
+      setCustomError("Please enter a valid amount.");
+      return;
+    }
+    setCustomError("");
+    window.open(buildPayPalUrl(val), "_blank", "noopener,noreferrer");
+  };
 
   return (
     <>
-      {/* Hero */}
+      {/* ── Hero ── */}
       <section
         className="min-h-[60vh] pt-32 pb-20 md:pb-28 relative flex items-center"
         style={{
@@ -120,175 +61,225 @@ export default function DonatePage() {
           backgroundRepeat: "no-repeat",
         }}
       >
-        {/* Single semi-transparent overlay for text readability */}
-        <div className="absolute inset-0" style={{ backgroundColor: "rgba(10,22,40,0.55)" }} />
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: "rgba(10,22,40,0.58)" }}
+        />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 w-full">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
             className="max-w-3xl mx-auto text-center"
           >
-            <span className="inline-block px-4 py-1.5 rounded-full border text-sm font-medium mb-6" style={{ backgroundColor: "rgba(201,168,76,0.15)", borderColor: "rgba(201,168,76,0.3)", color: "#c9a84c" }}>
+            <span
+              className="inline-block px-4 py-1.5 rounded-full border text-sm font-medium mb-6"
+              style={{
+                backgroundColor: "rgba(201,168,76,0.15)",
+                borderColor: "rgba(201,168,76,0.3)",
+                color: "#c9a84c",
+              }}
+            >
               Support Our Mission
             </span>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold hero-heading mb-6" style={{ color: "#faf7f2" }}>
-              Make a Difference
+            <h1
+              className="font-display text-4xl md:text-5xl lg:text-6xl font-bold hero-heading mb-6"
+              style={{ color: "#faf7f2" }}
+            >
+              Make a Difference Today
             </h1>
-            <p className="text-lg leading-relaxed" style={{ color: "rgba(250,247,242,0.82)" }}>
-              Your donation helps provide education, resources, and hope to
-              students who need it most.
+            <p
+              className="text-lg leading-relaxed"
+              style={{ color: "rgba(250,247,242,0.82)" }}
+            >
+              Choose an amount below — you'll be taken directly to PayPal where
+              you can pay by card, PayPal balance, or Venmo.
             </p>
-            <p className="text-base leading-relaxed mt-6" style={{ color: "rgba(250,247,242,0.82)" }}>
+            <p
+              className="text-sm mt-4"
+              style={{ color: "rgba(250,247,242,0.60)" }}
+            >
               {foundation.nonprofitStatement}
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Donation Form */}
+      {/* ── Donation Section ── */}
       <section className="py-20 md:py-28 bg-cream">
         <div className="container mx-auto px-4 md:px-6">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-5xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="grid lg:grid-cols-5 gap-8"
+              className="grid lg:grid-cols-5 gap-10"
             >
-              {/* Amount Selection */}
+              {/* ── Left: Tier Cards ── */}
               <div className="lg:col-span-3">
-                <h2 className="font-display text-2xl font-bold text-navy mb-6">
+                <h2 className="font-display text-2xl font-bold text-navy mb-2">
                   Choose Your Donation Amount
                 </h2>
+                <p className="text-sm text-navy/60 mb-8">
+                  Click any amount to open PayPal — it's pre-filled and ready.
+                </p>
 
                 <div className="grid sm:grid-cols-2 gap-4 mb-6">
-                  {donationTiers.map((tier, index) => (
-                    <motion.button
-                      key={tier.amount}
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                      onClick={() => setSelectedAmount(tier.amount)}
-                      className={`p-5 rounded-xl text-left transition-all duration-300 ${selectedAmount === tier.amount
-                          ? "bg-gold text-navy shadow-lg shadow-gold/20"
-                          : "bg-white border border-cream-warm hover:border-gold/30 hover:shadow-lg"
+                  {donationTiers.map((tier) => {
+                    const isCustomTier = tier.amount === "custom";
+                    const isSelected = selectedAmount === tier.amount;
+
+                    return (
+                      <motion.button
+                        key={tier.amount}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.97 }}
+                        onClick={() => handleTierClick(tier.amount)}
+                        aria-label={`Donate ${tier.label} — ${tier.impact}`}
+                        className={`p-5 rounded-xl text-left transition-all duration-300 group ${
+                          isSelected
+                            ? "bg-gold text-navy shadow-lg shadow-gold/20"
+                            : "bg-white border border-cream-warm hover:border-gold/40 hover:shadow-lg"
                         }`}
-                    >
-                      <div className="flex items-center gap-3 mb-2">
-                        <div
-                          className={`w-8 h-8 rounded-full flex items-center justify-center ${selectedAmount === tier.amount
-                              ? "bg-navy"
-                              : "bg-gold/10"
-                            }`}
-                        >
-                          <Heart
-                            size={16}
-                            className={
-                              selectedAmount === tier.amount
-                                ? "text-gold"
-                                : "text-gold"
-                            }
-                          />
-                        </div>
-                        <span
-                          className={`font-display text-2xl font-bold ${selectedAmount === tier.amount
-                              ? "text-navy"
-                              : "text-navy"
-                            }`}
-                        >
-                          {tier.amount === "custom"
-                            ? "Custom"
-                            : `$${tier.amount}`}
-                        </span>
-                      </div>
-                      <p
-                        className={`text-sm ${selectedAmount === tier.amount
-                            ? "text-navy/70"
-                            : "text-navy/60"
-                          }`}
                       >
-                        {tier.impact}
-                      </p>
-                    </motion.button>
-                  ))}
+                        <div className="flex items-center gap-3 mb-2">
+                          <div
+                            className={`w-8 h-8 rounded-full flex items-center justify-center flex-shrink-0 ${
+                              isSelected ? "bg-navy" : "bg-gold/10"
+                            }`}
+                          >
+                            <Heart size={15} className="text-gold" />
+                          </div>
+                          <span className="font-display text-2xl font-bold text-navy">
+                            {tier.label}
+                          </span>
+                          {!isCustomTier && (
+                            <ExternalLink
+                              size={14}
+                              className={`ml-auto transition-opacity ${
+                                isSelected
+                                  ? "opacity-60"
+                                  : "opacity-0 group-hover:opacity-40"
+                              } text-navy`}
+                            />
+                          )}
+                        </div>
+                        <p className="text-sm text-navy/60">{tier.impact}</p>
+                      </motion.button>
+                    );
+                  })}
                 </div>
 
-                {/* Custom Amount Input */}
-                {selectedAmount === "custom" && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    className="mb-6"
-                  >
-                    <label className="block text-sm font-medium text-navy mb-2">
-                      Enter Custom Amount
-                    </label>
-                    <div className="relative">
-                      <span className="absolute left-4 top-1/2 -translate-y-1/2 text-navy/60">
-                        $
-                      </span>
-                      <input
-                        type="number"
-                        value={customAmount}
-                        onChange={(e) => setCustomAmount(e.target.value)}
-                        placeholder="0.00"
-                        className="w-full pl-8 pr-4 py-3 rounded-xl border border-cream-warm focus:outline-none focus:border-gold"
-                      />
-                    </div>
-                  </motion.div>
-                )}
+                {/* ── Custom Amount Input ── */}
+                <AnimatePresence>
+                  {selectedAmount === "custom" && (
+                    <motion.div
+                      key="custom-input"
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.25 }}
+                      className="overflow-hidden"
+                    >
+                      <div className="bg-white border border-cream-warm rounded-xl p-5 mb-4">
+                        <label className="block text-sm font-medium text-navy mb-2">
+                          Enter your amount (USD)
+                        </label>
+                        <div className="flex gap-3">
+                          <div className="relative flex-1">
+                            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-navy/50 font-medium">
+                              $
+                            </span>
+                            <input
+                              type="number"
+                              min="1"
+                              step="1"
+                              value={customAmount}
+                              onChange={(e) => {
+                                setCustomAmount(e.target.value);
+                                setCustomError("");
+                              }}
+                              onKeyDown={(e) =>
+                                e.key === "Enter" && handleCustomDonate()
+                              }
+                              placeholder="0.00"
+                              className="w-full pl-8 pr-4 py-3 rounded-xl border border-cream-warm focus:outline-none focus:border-gold text-navy"
+                            />
+                          </div>
+                          <motion.button
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.97 }}
+                            onClick={handleCustomDonate}
+                            className="btn-primary flex items-center gap-2 whitespace-nowrap"
+                          >
+                            Donate Now
+                            <ArrowRight size={16} />
+                          </motion.button>
+                        </div>
+                        {customError && (
+                          <p className="text-red-500 text-xs mt-2">
+                            {customError}
+                          </p>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
 
-                {/* PayPal Button */}
-                <div className="mt-8">
-                  <h3 className="font-display text-lg font-semibold text-navy mb-4">
-                    Complete Your Donation
-                  </h3>
-                  <div className="bg-white rounded-xl border border-cream-warm p-6">
-                    <PayPalDonateButton hostedButtonId={PAYPAL_BUTTON_ID} />
-                    <p className="text-xs text-navy/50 mt-4 text-center">
-                      Secure donation powered by PayPal
-                    </p>
-                  </div>
+                {/* ── Trust Badge ── */}
+                <div className="flex items-center gap-2 text-xs text-navy/50 mt-2">
+                  <Shield size={13} className="text-gold" />
+                  <span>
+                    Payments processed securely by PayPal. Card, PayPal &amp;
+                    Venmo accepted.
+                  </span>
                 </div>
               </div>
 
-              {/* Impact Info */}
+              {/* ── Right: Impact Panel ── */}
               <div className="lg:col-span-2">
                 <div className="glass-card p-6 sticky top-24">
-                  <h3 className="font-display text-lg font-semibold text-navy mb-4">
+                  <h3 className="font-display text-lg font-semibold text-navy mb-1">
                     Your Impact
                   </h3>
+                  <p className="text-xs text-navy/50 mb-5">
+                    Here's what each donation unlocks for a student in need.
+                  </p>
+
                   <ul className="space-y-4">
-                    <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-navy/70">
-                        $10 provides school supplies for one student
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-navy/70">
-                        $25 covers a student&apos;s exam registration fee
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-navy/70">
-                        $50 provides textbooks for a month
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-3">
-                      <Check className="w-5 h-5 text-gold mt-0.5 flex-shrink-0" />
-                      <span className="text-sm text-navy/70">
-                        $100 funds a semester scholarship
-                      </span>
-                    </li>
+                    {donationTiers
+                      .filter((t) => t.amount !== "custom")
+                      .map((tier) => (
+                        <li
+                          key={tier.amount}
+                          className="flex items-start gap-3"
+                        >
+                          <div className="w-5 h-5 rounded-full bg-gold/15 flex items-center justify-center flex-shrink-0 mt-0.5">
+                            <Check size={11} className="text-gold" />
+                          </div>
+                          <span className="text-sm text-navy/70">
+                            <strong className="text-navy font-semibold">
+                              {tier.label}
+                            </strong>{" "}
+                            — {tier.impact}
+                          </span>
+                        </li>
+                      ))}
                   </ul>
 
                   <div className="mt-6 pt-6 border-t border-cream-warm">
-                    <p className="text-xs text-navy/50 text-center">
+                    <p className="text-xs text-navy/50 text-center leading-relaxed">
                       {foundation.nonprofitStatement}
                     </p>
+                  </div>
+
+                  {/* PayPal logo hint */}
+                  <div className="mt-4 flex items-center justify-center gap-2 opacity-50">
+                    <Shield size={12} className="text-navy" />
+                    <span className="text-[11px] text-navy/60 font-medium">
+                      Secured by PayPal
+                    </span>
                   </div>
                 </div>
               </div>
