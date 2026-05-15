@@ -5,9 +5,6 @@ import { motion } from "framer-motion";
 import { Mail, MapPin, Phone, Send, CheckCircle, Loader2 } from "lucide-react";
 import { foundation } from "@/lib/constants";
 
-// ✅ Web3Forms Access Key
-const WEB3FORMS_ACCESS_KEY = "4f3ed653-c158-4843-9d4f-a64aa8f1f90e";
-
 const subjects = [
   { value: "partner", label: "Partner With Us" },
   { value: "volunteer", label: "Volunteer" },
@@ -41,24 +38,15 @@ export default function ContactPage() {
     setError("");
 
     try {
-      const response = await fetch("https://api.web3forms.com/submit", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_ACCESS_KEY,
-          name: formData.name,
-          email: formData.email,
-          subject: `[${formData.subject}] New message from ${formData.name}`,
-          message: formData.message,
-        }),
+        body: JSON.stringify(formData),
       });
 
-      const result = await response.json();
-
-      if (!response.ok || result.success === false) {
+      if (!response.ok) {
         throw new Error("Failed to send message");
       }
 
@@ -83,6 +71,7 @@ export default function ContactPage() {
             backgroundRepeat: "no-repeat",
           }}
         >
+          {/* Single semi-transparent overlay for text readability */}
           <div className="absolute inset-0" style={{ backgroundColor: "rgba(10,22,40,0.55)" }} />
 
           <div className="container mx-auto px-4 md:px-6 relative z-10 w-full">
@@ -101,7 +90,7 @@ export default function ContactPage() {
                 We appreciate you reaching out. Our team will get back to you
                 within 24-48 hours.
               </p>
-              <p className="text-base leading-relaxed mt-6" style={{ color: "rgba(250,247,242,0.82)" }}>
+            <p className="text-base leading-relaxed mt-6" style={{ color: "rgba(250,247,242,0.82)" }}>
                 {foundation.nonprofitStatement}
               </p>
             </motion.div>
@@ -161,6 +150,7 @@ export default function ContactPage() {
           backgroundRepeat: "no-repeat",
         }}
       >
+        {/* Single semi-transparent overlay for text readability */}
         <div className="absolute inset-0" style={{ backgroundColor: "rgba(10,22,40,0.55)" }} />
 
         <div className="container mx-auto px-4 md:px-6 relative z-10 w-full">
@@ -207,7 +197,10 @@ export default function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 {/* Name */}
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-navy mb-2">
+                  <label
+                    htmlFor="name"
+                    className="block text-sm font-medium text-navy mb-2"
+                  >
                     Full Name
                   </label>
                   <input
@@ -215,7 +208,9 @@ export default function ContactPage() {
                     id="name"
                     required
                     value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, name: e.target.value })
+                    }
                     className="w-full px-4 py-3 rounded-xl border border-cream-warm focus:outline-none focus:border-gold transition-colors"
                     placeholder="John Doe"
                   />
@@ -223,7 +218,10 @@ export default function ContactPage() {
 
                 {/* Email */}
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-navy mb-2">
+                  <label
+                    htmlFor="email"
+                    className="block text-sm font-medium text-navy mb-2"
+                  >
                     Email Address
                   </label>
                   <input
@@ -231,7 +229,9 @@ export default function ContactPage() {
                     id="email"
                     required
                     value={formData.email}
-                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
                     className="w-full px-4 py-3 rounded-xl border border-cream-warm focus:outline-none focus:border-gold transition-colors"
                     placeholder="john@example.com"
                   />
@@ -239,14 +239,19 @@ export default function ContactPage() {
 
                 {/* Subject */}
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-navy mb-2">
+                  <label
+                    htmlFor="subject"
+                    className="block text-sm font-medium text-navy mb-2"
+                  >
                     Subject
                   </label>
                   <select
                     id="subject"
                     required
                     value={formData.subject}
-                    onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, subject: e.target.value })
+                    }
                     className="w-full px-4 py-3 rounded-xl border border-cream-warm focus:outline-none focus:border-gold transition-colors bg-white"
                   >
                     <option value="">Select a subject</option>
@@ -260,7 +265,10 @@ export default function ContactPage() {
 
                 {/* Message */}
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-navy mb-2">
+                  <label
+                    htmlFor="message"
+                    className="block text-sm font-medium text-navy mb-2"
+                  >
                     Message
                   </label>
                   <textarea
@@ -268,14 +276,18 @@ export default function ContactPage() {
                     required
                     rows={5}
                     value={formData.message}
-                    onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
                     className="w-full px-4 py-3 rounded-xl border border-cream-warm focus:outline-none focus:border-gold transition-colors resize-none"
                     placeholder="Tell us about yourself and how you'd like to get involved..."
                   />
                 </div>
 
                 {/* Error Message */}
-                {error && <p className="text-red-500 text-sm">{error}</p>}
+                {error && (
+                  <p className="text-red-500 text-sm">{error}</p>
+                )}
 
                 {/* Submit Button */}
                 <button
@@ -311,7 +323,8 @@ export default function ContactPage() {
                   Contact Information
                 </h2>
                 <p className="text-navy/70">
-                  Prefer to reach out directly? Here&apos;s how you can contact us.
+                  Prefer to reach out directly? Here&apos;s how you can contact
+                  us.
                 </p>
               </div>
 
