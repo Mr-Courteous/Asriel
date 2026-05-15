@@ -18,7 +18,7 @@ export async function POST(request: Request) {
 
     // Send email using Resend
     const { data, error } = await resend.emails.send({
-      from: "Asriel Foundation <onboarding@resend.dev>",
+      from: "Asriel Foundation <contact@asrielfoundation.com>",
       to: process.env.CONTACT_EMAIL!,
       subject: `[${subject}] New message from ${name}`,
       html: `
